@@ -2,7 +2,7 @@
    "name": "your-project",
    "scripts": {
      "build": "cd client && npm install && npm run build",
-     "start": "node server.js",
+     "start": "node server/server.js",
      "dev": "concurrently \"cd client && npm run dev\" \"node server.js\""
    },
    "dependencies": {

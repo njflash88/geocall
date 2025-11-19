@@ -7,7 +7,7 @@ const { Server } = require("socket.io");
 const { disconnect } = require("process");
 
 const server = http.createServer(app);
-app.use(express.static(path.join(__dirname, "client/dist"))); // GC added
+app.use(express.static(path.join(__dirname, "../client/dist"))); // GC added
 app.use(cors());
 
 const io = new Server(server, {
