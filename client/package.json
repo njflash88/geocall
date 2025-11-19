@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
     "google-map-react": "^2.2.5",

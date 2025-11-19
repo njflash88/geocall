@@ -9,7 +9,7 @@ let socket = null;
 
 export const connectWithSocketIOServer = () => {
   socket = io("http://localhost:3003");
-
+  console.log("CONNNECTING TO SOCKET SERVER...");
   socket.on("connect", () => {
     console.log(`connected to socket server : ${socket.id}`);
   });
@@ -32,7 +32,7 @@ export const connectWithSocketIOServer = () => {
 };
 
 export const login = (data) => {
-  // console.log("emitting user-login event with data:", data);
+  console.log("emitting user-login event with data:", data);
   socket.emit("user-login", data);
 };
 

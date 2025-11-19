@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path"); // GC added
 const app = express();
 const http = require("http");
 const cors = require("cors");
@@ -6,14 +7,16 @@ const { Server } = require("socket.io");
 const { disconnect } = require("process");
 
 const server = http.createServer(app);
-
+app.use(express.static(path.join(__dirname, "client/dist"))); // GC added
 app.use(cors());
 
 const io = new Server(server, {
   cors: {
     origin: "*",
+    // origin: process.env.CLIENT_URL || "http://localhost:3000",
     methods: ["GET", "POST"],
   },
+  // transports: ['websocket', 'polling']
 });
 
 app.get("/", (req, res) => {
@@ -38,6 +41,7 @@ const PORT = process.env.PORT || 3003;
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`🌐 Environment: ${process.env.NODE_ENV || "development"}`);
 });
 
 const disconnectEventHandler = (id) => {
