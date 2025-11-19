@@ -12,7 +12,7 @@ const NewMessage = ({ socketId }) => {
       setMessage(event.target.value);
    }
    const handleKeyPressed = (event) => {
-      if (event.code === "Enter" && message.length > 0) {
+      if ((event.code === "Enter" || event.key === "Enter") && message.length > 0) {
          proceedChatMesssage();
          setMessage("");
       }
