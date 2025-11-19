@@ -8,7 +8,11 @@ import { chatMessageHandler } from "../store/actions/messengerActions";
 let socket = null;
 
 export const connectWithSocketIOServer = () => {
-  socket = io("http://localhost:3003");
+  const socketServerUrl =
+    import.meta.env.VITE_SOCKET_SERVER_URL || window.location.origin;
+  // socket = io("http://localhost:3003");
+  socket = io(socketServerUrl);
+
   console.log("CONNNECTING TO SOCKET SERVER...");
   socket.on("connect", () => {
     console.log(`connected to socket server : ${socket.id}`);

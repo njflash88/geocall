@@ -12,9 +12,17 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    // origin: "*",
     // origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? [
+            "https://geocall-production.up.railway.app",
+            "https://geocall-production.railway.app",
+          ]
+        : ["http://localhost:5173", "http://127.0.0.1:5173"], // Vite dev server
     methods: ["GET", "POST"],
+    credentials: true,
   },
   // transports: ['websocket', 'polling']
 });
